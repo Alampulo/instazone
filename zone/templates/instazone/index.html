@@ -1,4 +1,4 @@
-{%extends 'ig/base.html'%} {%block content%} 
+{%extends 'instazone/base.html'%} {%block content%} 
 <div class="container">
     <div class="row">
         {%for image in image %}
@@ -17,8 +17,8 @@
     </div>
     <div class="card-footer">
         <a href="#">
-            <img src="https://material.io/tools/icons/static/icons/baseline-favorite_border-24px.svg" alt="" style="height:32 width:32 hspace:10"> </a><br>
-            <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/137689-200.png" alt="" style="height:32 width:32 hspace:10">
+            <img src="https://material.io/tools/icons/static/icons/baseline-favorite_border-24px.svg" alt="" style="height:32; width:32;"> </a><br>
+            <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/137689-200.png" alt="" style="height:32; width:32; ">
         <p>{{image.user_name}} {{image.caption}} </p>
         <p> Likes: {{image.likes.count}}</p><p>{{image.comment.count}}</p>
         {%for comment in image.comment%}
