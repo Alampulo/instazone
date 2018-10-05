@@ -1,0 +1,77 @@
+{%extends 'ig/base.html'%} {%block content%}
+<div class="loader"></div>
+
+<h1 class="text-center"></h1>
+
+
+<div class="container">
+</div>
+<div class="container">
+    <div class="row">
+        
+        {%for image in image %} 
+            <div class="col-md-6 ">
+        <center>
+                    <div class="card">
+                        <!-- <div class="card-header">
+                            {{profile.profile_avatar.url}}
+                            <h5>{{image.user_name}}</h5>
+                            <h5>{{image.location}}</h5>
+                        </div> -->
+                        <div class="card-body">
+                       
+                    <img src="{{image.image.url}}" alt="" class="img img-responsive img-thumbnail" data-target="#myModal{{forloop.counter}}"
+                        data-toggle="modal">
+             
+                        <!-- Caption: {{image.caption}}
+                        <br> -->
+                    {%for comment in comment %}
+                    <div class="card-footer">
+
+                    Comments: {{post.comment}}
+                    <a href="{%url 'comment' post.id%}" class="btn btn-success">Comment</a>
+                    {%empty %}
+                    Comments:
+                    {%endfor%}
+                </div>
+                </div>
+            </div>
+        </center>
+        <div id="myModal{{forloop.counter}}" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title text-center">{{image.user_name       }}</h4>
+                        <h4 class="modal-title text-center">{{image.image_name}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{{image.image.url}}" class="img-fluid">
+                        <br>
+                        <br>
+                        <p class=" lead">Caption: {{image.caption}}.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#">
+                        
+                        </a>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+        {% empty %}
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h1>Sorry, There are no photos to display... Try again later</h1>
+
+        </div>
+
+        {% endfor %}
+        </div>
+    </div>
+</div>
+</div>
+{%endblock%}
