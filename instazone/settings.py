@@ -65,6 +65,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # 'imagekit.models',
     # 'imagekit',
+    'bootstrap4',
     'zone.apps.ZoneConfig',
     'django.contrib.admin',
     'django.contrib.auth',

@@ -19,7 +19,7 @@ from django.contrib.auth import views
 
 urlpatterns = [
     url(r'', include('zone.urls')),
-    url(r'^admin/', admin.site.urls)
+    url(r'^admin/', admin.site.urls),
 ]
 
 
