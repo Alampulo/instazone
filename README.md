@@ -58,4 +58,9 @@ JavaScript
 Heroku
 License
 
+<<<<<<< HEAD
 This project is licensed under the MIT License - see the LICENSE file for details
+=======
+This project is licensed under the MIT License - see the LICENSE file for detailsma
+ 
+>>>>>>> e49c5de9618fed201cdfab39c666208eff67ef51
