@@ -3,6 +3,7 @@ import datetime as dt
 from django.contrib.auth.models import User
 # from imagekit.models import ProcessedImageField
 # from imagekit.processors import ResizeToFill
+from tinymce.models import HTMLField
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 # Create your models here.
@@ -66,7 +67,7 @@ class Images(models.Model):
     caption = models.TextField()
     user_name = models.ForeignKey(User, on_delete=models.CASCADE)
     time = models.DateTimeField(auto_now_add=True)
-    tags = models.ManyToManyField(tags, null=True)
+    # tags = models.ManyToManyField(tags, null=True)
     # comment = models.ForeignKey(Comments, on_delete=models.CASCADE)
     likes = models.PositiveIntegerField(default=0)
     user_liked= models.ManyToManyField(User,related_name='post_likes')
