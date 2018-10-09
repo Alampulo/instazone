@@ -14,11 +14,8 @@ class SignupForm(UserCreationForm):
 class NewPostForm(forms.ModelForm):
     class Meta:
         model = Images
-        exclude = ['time', 'likes', 'tags', 'user_name', 'user_liked']
-        widgets = {
-            'tags': forms.CheckboxSelectMultiple(),
-            # 'location': forms.CheckboxSelectMultiple(),
-        }
+        exclude = ['time', 'likes', 'tags', 'user_name', 'user_liked', 'location']
+        
 
 class ProfileForm(forms.ModelForm):
     class Meta:

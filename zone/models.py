@@ -61,19 +61,19 @@ def save_user_profile(sender, instance, **kwargs):
        
 
 class Images(models.Model):
-    # image = ProcessedImageField(upload_to = 'posts/', processors=[ResizeToFill(700,700)], format = 'JPEG', options ={'quality':100})
-    name = models.CharField(max_length=30)
+    image = models.ImageField(upload_to = 'posts/',default="")
+    name = models.CharField(max_length=30, null=True)
     location = models.CharField(max_length=60)
     caption = models.TextField()
-    user_name = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_name = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     time = models.DateTimeField(auto_now_add=True)
     # tags = models.ManyToManyField(tags, null=True)
     # comment = models.ForeignKey(Comments, on_delete=models.CASCADE)
-    likes = models.PositiveIntegerField(default=0)
-    user_liked= models.ManyToManyField(User,related_name='post_likes')
+    # likes = models.PositiveIntegerField(default=0)
+    # user_liked= models.ManyToManyField(User,related_name='post_likes')
 
-    # def __str__(self):
-        # return self.image
+    def __str__(self):
+        return self.image
 
     class Meta:
         ordering = ['-time']
@@ -124,20 +124,20 @@ class Comments(models.Model):
 
 
 
-class Follow(models.Model):
-    following = models.ForeignKey(User, related_name="who_follows")
-    follower = models.ForeignKey(User, related_name="who_is_followed")
-    followed_time = models.DateTimeField(auto_now_add=True)
-    #       
-    def following(self):
-        if self.following.count():
-            return self.following.count()
-        else:
-            return 0 
-    def __unicode__(self):
-          return str(self.follow_time)
+# class Follow(models.Model):
+#     following = models.ForeignKey(User, related_name="who_follows")
+#     follower = models.ForeignKey(User, related_name="who_is_followed")
+#     followed_time = models.DateTimeField(auto_now_add=True)
+#     #       
+#     def following(self):
+#         if self.following.count():
+#             return self.following.count()
+#         else:
+#             return 0 
+#     def __unicode__(self):
+#           return str(self.follow_time)
 
-class Like(models.Model):
-    liker = models.ForeignKey(User, related_name='liker')
-    image = models.ForeignKey(Images, related_name='image')
-    liked = models.BooleanField()
+# class Like(models.Model):
+#     liker = models.ForeignKey(User, related_name='liker')
+#     image = models.ForeignKey(Images, related_name='image')
+#     liked = models.BooleanField()

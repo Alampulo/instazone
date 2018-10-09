@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from .forms import SignupForm, NewPostForm, CommentForm, ProfileForm
 from django.contrib.auth.decorators import login_required
-from .models import Images, Profile, tags, Comments, Follow
+from .models import Images, Profile,Comments
 import datetime as dt
 from django.db import transaction
 from django.shortcuts import render
@@ -71,4 +71,17 @@ def index(request):
         "images":images,
         "profile":profile,
     }
-    return render(request,'ig/index.html')
+    return render(request,'ig/index.html',{"images": images})
+def new_post(request):
+   current_user = request.user
+   if request.method == 'POST':
+       form =NewPostForm(request.POST,request.FILES)
+       if form.is_valid():
+           image = form.save(commit=False)
+           image.user = current_user
+           image.save()
+       return render(request, 'new_post.html', {"form": form})
+
+   else:
+       form = NewPostForm()
+   return render(request, 'new_post.html', {"form": form})

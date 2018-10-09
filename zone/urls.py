@@ -12,7 +12,7 @@ urlpatterns = [
     # url(r'^explore/$', views.explore, name = 'explore'),
     # url(r'^profile/(\d+)$', views.profile, name = 'profile'),
     
-    # url(r'^post/$', views.new_post, name='new_post'),
+    url(r'^post/$', views.new_post, name='new_post'),
     # url(r'^search/$', views.search_profile, name='search_profile'),
     # url(r'^add/(\d+)$', views.comment, name='comment'),
     # url(r'^change_profile/(\d+)$', views.change_profile, name='change_profile'),
