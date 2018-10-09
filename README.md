@@ -48,10 +48,34 @@ Admin should:
 * Requirements.txt
 
 ### Cloning
-* In your terminal:
+* git clone https://github.com/Alampulo/Instazone 
+cd Not-Instagram
+Activate virtual environment
 
-        $ git clone https://github.com/Alampulo/instazone
-        $ cd MyGallery
+create and acvite a virtual environment python3.6 -m venv virtual && source virtual/bin/activate
+
+Install dependancies
+
+Install dependancies that will create an environment for the app to run pip install -r requirements.txt
+
+Create the Database
+
+- psql
+- CREATE DATABASE instazone;
+.env file
+
+Create .env file and paste paste the following filling where appropriate:
+
+SECRET_KEY = '<Secret_key>'
+DBNAME = 'instazone'
+USER = '<Username>'
+PASSWORD = '<password>'
+DEBUG = True
+Run initial Migration
+
+python3.6 manage.py makemigrations instazone
+python3.6 manage.py migrate
+Run the app
 
 ## Running the Application
 * Creating the virtual environment
