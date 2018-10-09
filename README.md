@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Instazone
  A  a clone of the image sharing network, Instagram. Users can sign up login, view and post photos and follow other users.
 ## Built By [Bryan Juma](https://github.com/Alampulo/)
@@ -31,13 +32,13 @@ Admin should:
 | Behaviour | Input | Output |
 | :---------------- | :---------------: | ------------------: |
 | Admin Authentication | **On demand** | Access Admin dashboard |
-| Display all images | **Home page** | Clickable links to open any images in a modal |
-| Display single images on click | **On  click** | All details should be viewed|
-| To add an image  | **Through Admin dashboard** | Add and add categories and tag location of Image|
+| Display  images | **Home page** | Clickable links to open any images in a modal |
+| Display single images on click | **On  signup** | All details should be viewed|
+| To add an image  | **Through Admin dashboard** |  add  Image|
 | To edit image  | **Through Admin dashboard** | Redirected to the  image form details and editing happens|
-| To delete an image  | **Through Admin dashboard ** | click on image object and confirm by delete button|
+| To comment an image  | **Through Admin dashboard ** | click on image object and confirm by comenting button|
 | To search  | **Enter text in search bar** | Users can search by category|
-| To filter by Location  | **Click drop-down on navbar** | Users can view images by Location|
+| To filter by Location  | **Click drop-down on navbar** | Users can view images on homepage|
 
 
 ## SetUp / Installation Requirements
@@ -98,8 +99,9 @@ Run the app
         $ python3.6 manage.py test images
 
 ## Technologies Used
-* Python3.6
-* Django and postgresql
+* Python3. /Django
+* postgresql
+* Bootstrap4
 
 ## License
 
@@ -112,3 +114,6 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+=======
+
+>>>>>>> a19d48ca5e7d915e861d019ec001acfdcff3485c
