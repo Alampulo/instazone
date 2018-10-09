@@ -63,14 +63,14 @@ def activate(request, uidb64, token):
 @login_required(login_url='/accounts/login/')
 def index(request):
     user = request.user
-    images = Images.objects.filter(user_name=request.user)
-    profile = Profile.objects.filter(user_name=request.user)
+    images = Images.objects.all()
+    # profile = Profile.objects.filter(user_name=request.user)
     # avatar = Profile.profile_avatar
-    includes = {
-        "user":user,
-        "images":images,
-        "profile":profile,
-    }
+    # includes = {
+    #     "user":user,
+    #     "images":images,
+    #     "profile":profile,
+    # }
     return render(request,'ig/index.html',{"images": images})
 def new_post(request):
    current_user = request.user

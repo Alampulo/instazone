@@ -1,20 +1,16 @@
 {%extends 'ig/base.html'%} {%block content%} 
 <div class="container">
-    <div class="row">
+    <!-- <div class="row"> -->
         {% for image in images %}
-        <center>
-           <div class="col-xs-3 col-md-6 col-sm-6 col-lg-6">
-           <div class="card">
-             <div class="card-header">
-                 <h5>{{image.user_name}}</h5>
+            <!-- <div class="col-xs-3 col-md-6 col-sm-6 col-lg-6"> -->
+            
+                <h5>{{user.username}}</h5>
                  <!-- <h5>{{image.location}}</h5> -->
-             </div>
-             <div class="card-body">
-            <p><img src="{{image.image.url}}" alt="" class="img img-responsive img-thumbnail" ></p>
-    <h1>Hello World</h1>
-        <p>some texts</p>
-    <p></p>
-    </div>
+    
+                <p><img src="{{image.image.url}}" alt="" class="img img-responsive img-thumbnail" ></p>
+                <h1>Hello World</h1>
+                <p>some texts</p>
+            
     <!-- <div class="card-footer"> -->
         <!-- <a href="#">
             <img src="https://material.io/tools/icons/static/icons/baseline-favorite_border-24px.svg" alt="" style="height:32 width:32 hspace:10"> </a><br>
@@ -26,17 +22,13 @@
         {%empty%}
         <p>No comments</p>
         {%endfor%} -->
-    </div>
-</div>
-</center>
+
 {%empty%}
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> -->
     <a href="{% url 'new_post' %}" class="btn btn-primary"> New Post</a>
     <h2>Sorry nigga!!. Kindly Follow users to be able to see photos in the site</h2>
 
+<!-- </div> -->
+{% endfor %}
 </div>
-{%endfor%}
-</div>
-</div>
-</div>
-{%endblock%}
+{% endblock %}
