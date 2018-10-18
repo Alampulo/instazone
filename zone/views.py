@@ -55,7 +55,8 @@ def activate(request, uidb64, token):
         user.is_active = True
         user.save()
         login(request, user)
-        # return redirect('home')
+        return redirect('home')
+
         return HttpResponse('Thank you for your email confirmation. <a href="/accounts/login">Click</a>to login your account.')
     else:
         return HttpResponse('Activation link is invalid!')
@@ -64,13 +65,13 @@ def activate(request, uidb64, token):
 def index(request):
     user = request.user
     images = Images.objects.all()
-    # profile = Profile.objects.filter(user_name=request.user)
+    profile = Profile.objects.filter(user_name=request.user)
     # avatar = Profile.profile_avatar
-    # includes = {
-    #     "user":user,
-    #     "images":images,
-    #     "profile":profile,
-    # }
+    includes = {
+        "user":user,
+        "images":images,
+        "profile":profile,
+    }
     return render(request,'ig/index.html',{"images": images})
     
 def new_post(request):
@@ -86,3 +87,71 @@ def new_post(request):
    else:
        form = NewPostForm()
    return render(request, 'new_post.html', {"form": form})
+
+@login_required(login_url='/accounts/login/')
+def explore(request):
+    date= dt.date.today
+    image = Images.objects.all()
+    return render(request, 'ig/explore.html', {"date":date, "image":image})
+
+@login_required(login_url='/accounts/login/')
+def profile(request, user_id):
+    user = request.user
+    form= ProfileForm()
+    images = Images.objects.filter(user_name=request.user)
+    profile = Profile.objects.filter(user_name=request.user)
+    avatar = Profile.profile_avatar
+    includes = {
+        "user":user,
+        "images":images,
+        "profile":profile,
+        "avatar": avatar,
+        "form": form,
+    }
+    return render(request, 'ig/profile.html', includes)
+
+@transaction.atomic
+@login_required(login_url='/accounts/login')
+def change_profile(request, user_id):
+    profile = request.user.profile
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        if form.is_valid():
+            current_user = request.user
+            form.save(commit=False)
+            profile.user =request.user
+            profile.save()
+            return redirect('profile', user_id)
+    
+    else:
+        form = ProfileForm(instance=request.user.profile)
+    return render(request, 'edit-profile.html', {"form": form})
+
+def search_profile(request):
+    if 'user_name' in request.GET and request.GET["user_name"]:
+        search_term = request.GET.get("user_name")
+        searched_profiles = Profile.search_profile(image)
+        images = Images.objects.all()
+        searched_profiles = Profile.search_profile(search_term)
+        message = f"{search_term}"
+        return render(request, 'ig/search.html', {"message":message, "searched_profiles": searched_profiles, 'user':user, "images":images})
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'ig/search.html', {"message": message})
+
+def comment(request):
+    current_user = request.user
+    image = Image.objects.get()
+    comment = Comments.objects.all()
+    profile = Profile.objects.filter(user_name_id = current_user)
+    if request.method == 'POST':
+        form = CommentForm(request.POST, request.FILES)
+        if form.is_valid():
+            comment = form.save(commit = False)
+            profile.user = current_user
+            comment.save()
+            return redirect('explore')
+    
+    else:
+        form = CommentForm()
+    return render(request, 'ig/comment.html', {"form":form, 'image': image, "comment":comment,})

@@ -18,7 +18,7 @@ class tags(models.Model):
         self.save()
 
 class Profile(models.Model):
-    user_name = models.OneToOneField(User, on_delete=models.CASCADE)
+    user_name = models.OneToOneField(User, on_delete=models.CASCADE,related_name="profile",primary_key=True)
     first_name = models.CharField(max_length=60)
     last_name = models.CharField(max_length=60)
     email = models.EmailField(max_length=100)
