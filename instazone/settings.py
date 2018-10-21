@@ -103,7 +103,7 @@ WSGI_APPLICATION = 'instazone.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'instazone',
+        'NAME': 'insta',
         'USER': 'moringa',
         'PASSWORD': 'Moringa123',
     }
