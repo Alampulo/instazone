@@ -1,8 +1,9 @@
 from django.db import models
 import datetime as dt
 from django.contrib.auth.models import User
+
 # from imagekit.models import ProcessedImageField
-# from imagekit.processors import ResizeToFill
+from imagekit.processors import ResizeToFill
 from tinymce.models import HTMLField
 from django.dispatch import receiver
 from django.db.models.signals import post_save
@@ -67,7 +68,7 @@ class Images(models.Model):
     caption = models.TextField()
     user_name = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     time = models.DateTimeField(auto_now_add=True)
-    # tags = models.ManyToManyField(tags, null=True)
+    tags = models.ManyToManyField(tags, null=True)
     # comment = models.ForeignKey(Comments, on_delete=models.CASCADE)
     # likes = models.PositiveIntegerField(default=0)
     # user_liked= models.ManyToManyField(User,related_name='post_likes')
@@ -124,18 +125,18 @@ class Comments(models.Model):
 
 
 
-# class Follow(models.Model):
-#     following = models.ForeignKey(User, related_name="who_follows")
-#     follower = models.ForeignKey(User, related_name="who_is_followed")
-#     followed_time = models.DateTimeField(auto_now_add=True)
-#     #       
-#     def following(self):
-#         if self.following.count():
-#             return self.following.count()
-#         else:
-#             return 0 
-#     def __unicode__(self):
-#           return str(self.follow_time)
+class Follow(models.Model):
+    following = models.ForeignKey(User, related_name="who_follows")
+    follower = models.ForeignKey(User, related_name="who_is_followed")
+    followed_time = models.DateTimeField(auto_now_add=True)
+    #       
+    def following(self):
+        if self.following.count():
+            return self.following.count()
+        else:
+            return 0 
+    def __unicode__(self):
+          return str(self.follow_time)
 
 # class Like(models.Model):
 #     liker = models.ForeignKey(User, related_name='liker')

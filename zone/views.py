@@ -57,7 +57,7 @@ def activate(request, uidb64, token):
         login(request, user)
         return redirect('home')
 
-        return HttpResponse('Thank you for your email confirmation. <a href="/accounts/login">Click</a>to login your account.')
+        return HttpResponse('yo niccur Thank you for your email confirmation. <a href="/accounts/login">Click</a>to login your account.')
     else:
         return HttpResponse('Activation link is invalid!')
 
