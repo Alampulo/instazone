@@ -7,28 +7,25 @@
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIdBUKRsHr2uXm8yi3dcQjQGYeKxmcb7_zfWimJ_EpCtWCHqQKvQ" style="height: 250px; width: 500px;" alt="" class="img-fluid">
     </div>
     <div class="col-lg-6 p-5">
-  <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-      {% for field in form %}
-      <p>
-        {{ field.label_tag }}<br>
-        {{ field }}
-        {% if field.help_text %}
-          <small style="display: none">{{ field.help_text }}</small>
-        {% endif %}
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-        {% endfor %}
-      </p>
-      {% endfor %}
-      <div class="form-group">
-        <input type="submit" class="btn btn-outline-primary btn-sm" value="Sign Up">
-        <p class="text">Do you already have an account?<a class="btn btn-default" href="/accounts/login/">Sign In</a></p>
-      </div>
-      <input type="hidden" name="next" value="{{next}}">
-
-    </form>
+      
+      <h2>Sign up</h2>
+      <form method="post">
+        {% csrf_token %}
+          {% for field in form %}
+          <p>
+            {{ field.label_tag }}<br>
+            {{ field }}
+            {% if field.help_text %}
+              <small style="display: none">{{ field.help_text }}</small>
+            {% endif %}
+            {% for error in field.errors %}
+              <p style="color: red">{{ error }}</p>
+            {% endfor %}
+          </p>
+          {% endfor %}
+        <button type="submit">Sign up</button>
+      </form>
+    
 
   </div>
 
